@@ -1,3 +1,5 @@
+import "../styles/pages/Login.scss";
+
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
@@ -6,6 +8,7 @@ import Button from "../components/Button";
 
 import passwordSvg from "../assets/pic/passwordSvg.svg";
 import personSvg from "../assets/pic/person.svg";
+import dangerSvg from "../assets/pic/DangerSvg.svg";
 
 function Login() {
   const {
@@ -16,11 +19,10 @@ function Login() {
 
   const submitForm = (data: any) => {
     axios
-      .post("http://localhost:8000/user/login/", data)
+      .post("user/login/", data)
       .then((response) => {
         localStorage.setItem("token", response.data.token);
         window.location.href = "/t";
-        console.log(response.data.token);
       })
       .catch((error: any) => {
         console.log("error:", error);
@@ -38,18 +40,18 @@ function Login() {
                 placeHolder="شماره پرسنلی"
                 icon={personSvg}
                 reactHookFrom={register("username", {
-                  // required: "وارد کردن شماره پرسنلی الزامی است",
-                  // pattern: {
-                    // value: /^[0-9]/i,
-                    // message: "شماره پرسنلی ولید نمی‌باشد!",
-                  // },
+                  required: "وارد کردن شماره پرسنلی الزامی است",
+                  pattern: {
+                    value: /[0-9]/,
+                    message: "شماره پرسنلی ولید نمی‌باشد!",
+                  },
                 })}
               />
-              {errors.email && (
+              {errors.username && (
                 <div className="register-wrong-input-alarm-container">
-                  {/* <img src={dangerSvg} /> */}
+                  <img src={dangerSvg} />
                   <p className="formError">
-                    {errors.email.message?.toString()}
+                    {errors.username.message?.toString()}
                   </p>
                 </div>
               )}
@@ -57,19 +59,18 @@ function Login() {
                 placeHolder="رمز"
                 icon={passwordSvg}
                 reactHookFrom={register("password", {
-                  // required: "وارد کردن نام کاربری الزامی است",
-                  // pattern: {
-                  //   value: /^[a-zA-Z0-9_]{3,20}$/,
-                  //   message:
-                  //     "نام کاربری باید از حروف کوچک، حروف بزرگ، اعداد و آندرلاین تشکیل شده باشد و بین ۳ تا ۲۰ کاراکتر باشد",
-                  // },
+                  required: "وارد کردن رمز الزامی است!",
+                  pattern: {
+                    value: /[a-zA-Z0-9_]/,
+                    message: "رمز وارد شده صحیح نیست!",
+                  },
                 })}
               />
-              {errors.username && (
+              {errors.password && (
                 <div className="register-wrong-input-alarm-container">
-                  {/* <img src={dangerSvg} /> */}
+                  <img src={dangerSvg} />
                   <p className="formError">
-                    {errors.username.message?.toString()}
+                    {errors.password.message?.toString()}
                   </p>
                 </div>
               )}

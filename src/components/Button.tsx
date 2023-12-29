@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-// import "../styles/components/Button.scss";
+import "../styles/components/Button.scss";
 
 interface Props {
   text: string;

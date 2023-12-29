@@ -1,0 +1,120 @@
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.register-wrong-input-alarm-container {
+  background-color: #ead2b7;
+  border-radius: 20px;
+  border: red solid;
+  padding: 8px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+
+  img {
+    margin-left: 8px;
+    max-width: 24px;
+  }
+
+  p {
+    margin-bottom: 0;
+    color: #1c1a2d;
+    font-weight: 700 !important;
+  }
+}
+
+.login-right-side {
+  padding-left: 120px;
+  color: #ead2b7;
+
+  a {
+    cursor: pointer;
+  }
+}
+
+.login-right-side-up {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.login-left-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-right: 120px;
+  padding-top: 88px;
+  padding-bottom: 88px;
+  color: #ead2b7;
+}
+
+.login-under-input-box {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+h1 {
+  font-family: KalamehExtraBold;
+  font-weight: 700;
+  font-size: 52px !important;
+}
+
+h3 {
+  font-size: 24px !important;
+}
+
+h6 {
+  font-family: KalamehThin;
+  font-size: 16px !important;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .login-container {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    background-color: #1c1a2d;
+    background-image: none;
+  }
+
+  .login-left-side {
+    display: none;
+  }
+
+  .login-right-side {
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .login-container {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    background-color: #1c1a2d;
+    background-image: none;
+  }
+
+  .login-left-side {
+    display: none;
+  }
+
+  .login-right-side {
+    padding: 20px;
+  }
+}
