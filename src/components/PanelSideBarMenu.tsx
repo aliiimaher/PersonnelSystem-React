@@ -2,10 +2,21 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import plusSvg from "../assets/pic/panel/plusSvg.svg";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
 
 function PanelSideBarMenu() {
-  var image_url = axios.defaults.baseURL + "";
-  //   thisUser.profile_image;
+  const thisUser: any = useContext(UserContext);
+  var image_url = axios.defaults.baseURL + thisUser.profile_image;
+
+  // ========== logout api ==========
+  function handleLogout() {
+    axios.post("/user/logout/", null, {
+      headers: {
+        Authorization: "Token " + window.localStorage.getItem("token"),
+      },
+    });
+  }
 
   return (
     <>
@@ -21,7 +32,7 @@ function PanelSideBarMenu() {
             onClick={() => (window.location.href = "/panel-edit-info")}
           />
           <div className="panel-side-bar-menu-person-name">
-            {/* {thisUser.first_name} {thisUser.last_name} */}
+            {thisUser.first_name} {thisUser.last_name}
           </div>
         </div>
         <li className="list-item-side-bar-menu">
@@ -41,7 +52,7 @@ function PanelSideBarMenu() {
             to={location}
             onClick={() => {
               //   setIsLoading(true);
-              //   handleLogout();
+              handleLogout();
               window.localStorage.removeItem("token");
               window.location.href = "/";
             }}
