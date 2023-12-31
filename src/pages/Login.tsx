@@ -22,7 +22,8 @@ function Login() {
       .post("user/login/", data)
       .then((response) => {
         localStorage.setItem("token", response.data.token);
-        window.location.href = "/t";
+        window.location.href = "/profile";
+        console.log(response);
       })
       .catch((error: any) => {
         console.log("error:", error);

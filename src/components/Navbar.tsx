@@ -1,4 +1,5 @@
 import "../styles/components/Navbar.scss";
+import Button from "./Button";
 
 function Navbar() {
   return (
@@ -49,6 +50,19 @@ function Navbar() {
                   آرشیو اخبار
                 </a>
               </li>
+              {localStorage.getItem("token") === undefined ||
+              !localStorage.getItem("token") ? (
+                <Button
+                  text="ورود"
+                  onclick={() => (window.location.href = "/login")}
+                />
+              ) : (
+                <li className="nav-item">
+                  <a className="nav-link" href="/profile">
+                    <div style={{ color: "#da0404" }}>پروفایل</div>
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
           <form className="d-flex" role="search">
