@@ -1,3 +1,5 @@
+import "../../styles/pages/userPanel/Dashboard.scss";
+
 import { useContext } from "react";
 import PanelSideBarMenu from "../../components/PanelSideBarMenu";
 import { UserContext } from "../../context/UserContext";
@@ -24,8 +26,8 @@ function Dashboard() {
             <table>
               <tr>
                 <th className="dashboard-th">
-                  <img src={personSvg} style={{ marginLeft: "8px" }} />
-                  <div style={{ fontFamily: "KalamehThin" }}>
+                  <div className="panel-dashboard-personal-info-items">
+                    <img src={personSvg} style={{ marginLeft: "8px" }} />
                     نام و نام خانوادگی:
                   </div>
                 </th>
@@ -36,8 +38,10 @@ function Dashboard() {
                 </td>
 
                 <th className="dashboard-th">
-                  <img src={sexSvg} style={{ marginLeft: "8px" }} />
-                  <div style={{ fontFamily: "KalamehThin" }}>جنسیت:</div>
+                  <div className="panel-dashboard-personal-info-items">
+                    <img src={sexSvg} style={{ marginLeft: "8px" }} />
+                    جنسیت:
+                  </div>
                 </th>
                 <td>
                   <strong>{thisUser.sex}</strong>
@@ -45,16 +49,20 @@ function Dashboard() {
               </tr>
               <tr>
                 <th className="dashboard-th">
-                  <img src={callSvg} style={{ marginLeft: "8px" }} />
-                  <div style={{ fontFamily: "KalamehThin" }}>شماره تماس:</div>
+                  <div className="panel-dashboard-personal-info-items">
+                    <img src={callSvg} style={{ marginLeft: "8px" }} />
+                    شماره تماس:
+                  </div>
                 </th>
                 <td>
                   <strong>{thisUser.phone_number}</strong>
                 </td>
 
                 <th className="dashboard-th">
-                  <img src={mailSvg} style={{ marginLeft: "8px" }} />
-                  <div style={{ fontFamily: "KalamehThin" }}>ایمیل:</div>
+                  <div className="panel-dashboard-personal-info-items">
+                    <img src={mailSvg} style={{ marginLeft: "8px" }} />
+                    ایمیل:
+                  </div>
                 </th>
                 <td>
                   <strong>{thisUser.email}</strong>
@@ -62,8 +70,10 @@ function Dashboard() {
               </tr>
               <tr>
                 <th className="dashboard-th">
-                  <img src={locationSvg} style={{ marginLeft: "8px" }} />
-                  <div style={{ fontFamily: "KalamehThin" }}>محل سکونت:</div>
+                  <div className="panel-dashboard-personal-info-items">
+                    <img src={locationSvg} style={{ marginLeft: "8px" }} />
+                    محل سکونت:
+                  </div>
                 </th>
                 <td>
                   <strong>{thisUser.location}</strong>

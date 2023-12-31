@@ -1,0 +1,54 @@
+.panel-side-bar-menu-container {
+  background-color: #162041;
+  border-radius: 20px;
+  min-width: 320px;
+  max-width: 500px;
+  padding: 16px;
+
+  li {
+    text-align: start;
+  }
+
+  a {
+    color: #e7e7e7;
+    text-decoration: none;
+  }
+}
+
+.panel-side-bar-menu-person {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #4B74FF;
+  border-radius: 16px;
+  margin: 0px;
+  margin-bottom: 8px;
+  padding: 24px 40px 24px 40px;
+
+  img {
+    width: 143px;
+    border-radius: 100%;
+  }
+
+  img:hover {
+    cursor: pointer;
+  }
+}
+
+.list-item-side-bar-menu {
+  background-color: #4B74FF;
+  width: 100%;
+  padding: 20px;
+  margin-top: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  list-style: url("../../assets/Pic/Cart/SquareBulletPointSvg.svg");
+  border-radius: 16px;
+}
+
+.panel-side-bar-menu-person-name {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 16px;
+}

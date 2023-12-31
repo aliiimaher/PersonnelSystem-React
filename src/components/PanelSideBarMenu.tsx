@@ -2,12 +2,19 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import plusSvg from "../assets/pic/panel/plusSvg.svg";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/UserContext";
+import "../styles/components/PanelSideBarMenu.scss";
 
 function PanelSideBarMenu() {
   const thisUser: any = useContext(UserContext);
-  var image_url = axios.defaults.baseURL + thisUser.profile_image;
+  const [isPaySalaryAdmin, setIsPaySalaryAdmin] = useState(false);
+  var image_url = axios.defaults.baseURL + "/" + thisUser.profile_image;
+
+  useEffect(() => {
+    handleCheckRole();
+    console.log(image_url);
+  }, []);
 
   // ========== logout api ==========
   function handleLogout() {
@@ -18,6 +25,15 @@ function PanelSideBarMenu() {
     });
   }
 
+  // ========== checkTheRole ==========
+  const handleCheckRole = () => {
+    if (thisUser.role === "paysalaryadmin") {
+      setIsPaySalaryAdmin(true);
+    } else {
+      setIsPaySalaryAdmin(false);
+    }
+  };
+
   return (
     <>
       {/* {isLoading && <Loading />} */}
@@ -25,7 +41,7 @@ function PanelSideBarMenu() {
         <div className="panel-side-bar-menu-person">
           <img
             src={
-              image_url !== `${axios.defaults.baseURL}null`
+              image_url !== `${axios.defaults.baseURL}/undefined`
                 ? image_url
                 : plusSvg
             }
@@ -44,6 +60,13 @@ function PanelSideBarMenu() {
         <li className="list-item-side-bar-menu">
           <Link to="/...">فاکتورها</Link>
         </li>
+        {isPaySalaryAdmin ? (
+          <li className="list-item-side-bar-menu">
+            <Link to="/pay-salary">پرداخت حقوق</Link>
+          </li>
+        ) : (
+          ""
+        )}
         <li className="list-item-side-bar-menu">
           <Link to="/panel-my-courses">دوره‌های من</Link>
         </li>
