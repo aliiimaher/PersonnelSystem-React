@@ -4,6 +4,7 @@ import HomePage from "./pages/Home";
 import Test from "./pages/Test";
 import Login from "./pages/Login";
 import Dashboard from "./pages/userPanel/Dashboard";
+import LeaveReq from "./pages/LeaveReq";
 
 function MyRoutes() {
   return (
@@ -13,6 +14,7 @@ function MyRoutes() {
         <Route path="/t" element={<Test />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Dashboard />} />
+        <Route path="/leave" element={<LeaveReq />} />
       </Routes>
     </Router>
   );
