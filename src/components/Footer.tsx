@@ -89,8 +89,8 @@ function Footer() {
                 </div>
               </div>
               <div className="dev-pic">
-                <img src={aliSvg} alt="pic" width="80" />
-                <img src={msnSvg} alt="pic" width="80" />
+                <img className="rounded" src={aliSvg} alt="pic" width="80" />
+                <img className="rounded" src={msnSvg} alt="pic" width="80" />
               </div>
             </div>
           </div>
