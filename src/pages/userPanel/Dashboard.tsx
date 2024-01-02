@@ -9,6 +9,7 @@ import sexSvg from "../../assets/pic/panel/SexSvg.svg";
 import callSvg from "../../assets/pic/panel/CallSvg.svg";
 import mailSvg from "../../assets/pic/panel/MailSvg.svg";
 import locationSvg from "../../assets/pic/panel/LocationSvg.svg";
+import Button from "../../components/Button";
 
 function Dashboard() {
   const thisUser: any = useContext(UserContext);
@@ -80,6 +81,27 @@ function Dashboard() {
                 </td>
               </tr>
             </table>
+          </div>
+          <div className="panel-dashboard-histories">
+            <h3>تاریخچه‌های من</h3>
+            <div className="panel-dashboard-buttons">
+              <Button
+                onclick={() => (window.location.href = "/history/trip")}
+                text="تاریخچه‌های سفر"
+              />
+              <Button
+                onclick={() => (window.location.href = "/history/leave")}
+                text="تاریخچه‌های مرخصی"
+              />
+              <Button
+                onclick={() => (window.location.href = "/history/payment")}
+                text="تاریخچه‌های حقوق"
+              />
+              <Button
+                onclick={() => (window.location.href = "/history/msg")}
+                text="تاریخچه‌های پیام"
+              />
+            </div>
           </div>
         </div>
       </div>

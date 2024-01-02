@@ -10,8 +10,28 @@
   font-family: KalamehThin;
 }
 
+.panel-dashboard-histories {
+  display: flex;
+  flex-direction: column;
+  border: solid 4px #162041;
+  border-radius: 20px;
+  padding: 40px;
+  margin-top: 4%;
+}
+
+.panel-dashboard-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2%;
+}
+
+.panel-dashboard-buttons-items {
+  display: flex;
+  justify-content: center;
+}
+
 .panel-dashboard-personal-info {
-  border: solid 4px #3a365e;
+  border: solid 4px #162041;
   border-radius: 20px;
   padding: 40px;
 
