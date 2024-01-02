@@ -50,6 +50,11 @@ function Navbar() {
                   آرشیو اخبار
                 </a>
               </li>
+              <li className="nav-item">
+                <a className="nav-link ba" href="/aboutus">
+                  درباره ما
+                </a>
+              </li>
               {localStorage.getItem("token") === undefined ||
               !localStorage.getItem("token") ? (
                 <Button

@@ -1,0 +1,44 @@
+.about-us-container {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 32px;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 66%;
+  align-items: center;
+  padding: 4% 0 4% 0;
+  direction: ltr;
+
+  img {
+    border-radius: 100%;
+    max-height: 100px;
+  }
+}
+
+.about-us-person {
+  display: flex;
+  width: 300px;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .about-us-container {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    padding: 1%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about-us-container {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+  }
+}
