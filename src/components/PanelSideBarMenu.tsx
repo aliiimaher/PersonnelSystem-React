@@ -2,19 +2,13 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import plusSvg from "../assets/pic/panel/plusSvg.svg";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import "../styles/components/PanelSideBarMenu.scss";
 
 function PanelSideBarMenu() {
   const thisUser: any = useContext(UserContext);
-  const [isPaySalaryAdmin, setIsPaySalaryAdmin] = useState(false);
   var image_url = axios.defaults.baseURL + "/" + thisUser.profile_image;
-
-  useEffect(() => {
-    handleCheckRole();
-    console.log(image_url);
-  }, []);
 
   // ========== logout api ==========
   function handleLogout() {
@@ -24,15 +18,6 @@ function PanelSideBarMenu() {
       },
     });
   }
-
-  // ========== checkTheRole ==========
-  const handleCheckRole = () => {
-    if (thisUser.role === "paysalaryadmin") {
-      setIsPaySalaryAdmin(true);
-    } else {
-      setIsPaySalaryAdmin(false);
-    }
-  };
 
   return (
     <>
@@ -55,21 +40,38 @@ function PanelSideBarMenu() {
           <Link to="/panel-dashboard">داشبورد</Link>
         </li>
         <li className="list-item-side-bar-menu">
-          <Link to="/panel-edit-info">ویرایش حساب کاربری</Link>
-        </li>
-        <li className="list-item-side-bar-menu">
           <Link to="/...">فاکتورها</Link>
         </li>
-        {isPaySalaryAdmin ? (
+        {/* here */}
+        {thisUser.role === "tripadmin" ? (
+          <li className="list-item-side-bar-menu">
+            <Link to="/accept-trip">مدیریت درخواست‌های سفر</Link>
+          </li>
+        ) : (
+          ""
+        )}
+        {thisUser.role === "leaveadmin" ? (
+          <li className="list-item-side-bar-menu">
+            <Link to="/accept-leave">مدیریت درخواست‌های مرخصی</Link>
+          </li>
+        ) : (
+          ""
+        )}
+        {thisUser.role === "boss" ? (
+          <li className="list-item-side-bar-menu">
+            <Link to="/recruitment">استخدام نیروی نگهداری</Link>
+          </li>
+        ) : (
+          ""
+        )}
+        {thisUser.role === "paysalaryadmin" ? (
           <li className="list-item-side-bar-menu">
             <Link to="/pay-salary">پرداخت حقوق</Link>
           </li>
         ) : (
           ""
         )}
-        <li className="list-item-side-bar-menu">
-          <Link to="/panel-my-courses">دوره‌های من</Link>
-        </li>
+        {/* end here */}
         <li className="list-item-side-bar-menu">
           <Link
             to={location}
