@@ -5,9 +5,18 @@ interface Props {
   icon?: string;
   reactHookFrom?: any;
   type?: "text" | "password" | "textarea";
+  onchange?: any;
+  value?: any;
 }
 
-function InputBox({ placeHolder, icon, reactHookFrom, type = "text" }: Props) {
+function InputBox({
+  placeHolder,
+  icon,
+  reactHookFrom,
+  type = "text",
+  onchange,
+  value,
+}: Props) {
   return (
     <>
       {type === "textarea" ? (
@@ -25,6 +34,8 @@ function InputBox({ placeHolder, icon, reactHookFrom, type = "text" }: Props) {
             type={type}
             className="form-control border-0"
             placeholder={placeHolder}
+            onChange={onchange}
+            value={value}
             aria-label="Username"
             dir="rtl"
             style={{
@@ -34,7 +45,6 @@ function InputBox({ placeHolder, icon, reactHookFrom, type = "text" }: Props) {
               boxShadow: "none",
             }}
             {...reactHookFrom}
-            onChange={onchange}
           />
         </div>
       )}
