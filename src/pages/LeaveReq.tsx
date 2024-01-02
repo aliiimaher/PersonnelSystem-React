@@ -3,14 +3,21 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../styles/pages/LeaveReq.scss";
 import Button from "../components/Button";
+import InputBox from "../components/InputBox";
 
 function LeaveReq() {
+  const [selectedLeaveType, setSelectedLeaveType] = useState("");
   const [selectedStartDate, setSelectedStartDate] = useState<Date | null>();
   const [selectedEndDate, setSelectedEndDate] = useState<Date | null>();
+
+  const handleSelectType = (event: any) => {
+    setSelectedLeaveType(event.target.value);
+  };
 
   const testHandle = () => {
     console.log("start: ", selectedStartDate);
     console.log("end: ", selectedEndDate);
+    console.log("type: ", selectedLeaveType);
   };
   return (
     <>
@@ -20,12 +27,16 @@ function LeaveReq() {
           <select
             className="form-select form-select-lg mb-3"
             aria-label="Large select example"
+            onChange={handleSelectType}
+            value={selectedLeaveType}
           >
             <option selected>نوع مرخصی را انتخاب کنید</option>
-            <option value="1">اضطراری</option>
-            <option value="2">معمولی</option>
-            <option value="3">اعیاد رسمی</option>
+            <option value="اضطراری">اضطراری</option>
+            <option value="معمولی">معمولی</option>
+            <option value="اعیاد رسمی">اعیاد رسمی</option>
           </select>
+        </div>
+        <div className="leave-datepicker">
           <DatePicker
             selected={selectedStartDate}
             onChange={(date) => setSelectedStartDate(date)}
@@ -39,7 +50,10 @@ function LeaveReq() {
             placeholderText="روز پايان"
           />
         </div>
-        <Button text="دخيره" onclick={testHandle} />
+        <div className="leave-reason-input">
+          <InputBox type="textarea" placeHolder="علت مرخصی را شرح دهید" />
+        </div>
+        <Button text="ذخيره" onclick={testHandle} />
       </div>
     </>
   );

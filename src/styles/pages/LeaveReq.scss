@@ -12,10 +12,21 @@
   max-width: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.leave-datepicker {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
 
   input {
     margin: 2px 0;
     border-radius: 8px;
     text-align: center;
   }
+}
+
+.leave-reason-input {
+  margin: auto;
+  width: 100%;
 }
