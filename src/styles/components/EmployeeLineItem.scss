@@ -1,0 +1,9 @@
+.employee-line-item-main {
+  display: flex;
+  flex-direction: row;
+  border: solid;
+  border-radius: 8px;
+  justify-content: space-between;
+  padding: 1%;
+  cursor: pointer;
+}

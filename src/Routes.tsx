@@ -7,6 +7,7 @@ import Dashboard from "./pages/userPanel/Dashboard";
 import LeaveReq from "./pages/LeaveReq";
 import Recruitment from "./pages/Recruitment";
 import AboutUs from "./pages/AboutUs";
+import PaySalary from "./pages/PaySalary";
 
 function MyRoutes() {
   return (
@@ -18,6 +19,7 @@ function MyRoutes() {
         <Route path="/profile" element={<Dashboard />} />
         <Route path="/leave" element={<LeaveReq />} />
         <Route path="/recruitment" element={<Recruitment />} />
+        <Route path="/pay-salary" element={<PaySalary />} />
         <Route path="/aboutus" element={<AboutUs />} />
       </Routes>
     </Router>

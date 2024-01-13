@@ -37,7 +37,7 @@ function PanelSideBarMenu() {
           </div>
         </div>
         <li className="list-item-side-bar-menu">
-          <Link to="/panel-dashboard">داشبورد</Link>
+          <Link to="/profile">داشبورد</Link>
         </li>
         <li className="list-item-side-bar-menu">
           <Link to="/...">فاکتورها</Link>
