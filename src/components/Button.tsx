@@ -5,7 +5,7 @@ import "../styles/components/Button.scss";
 interface Props {
   text: string;
   size?: "small" | "large";
-  backgroundColor?: "yes" | "no";
+  backgroundColor?: "yes" | "no" | "green";
   btn100Width?: "yes" | "no";
   icon?: string;
   onclick?: () => void;
@@ -44,8 +44,10 @@ function Button({
   const generateBtnBackground = () => {
     if (backgroundColor === "no") {
       setBtnBackground("background-no");
-    } else {
+    } else if (backgroundColor === "yes") {
       setBtnBackground("background-yes");
+    } else {
+      setBtnBackground("background-green");
     }
   };
 

@@ -1,7 +1,7 @@
 import axios from "axios";
-import EmployeeLineItem from "../components/EmployeeLineItem";
-import InputBox from "../components/InputBox";
-import "../styles/pages/PaySalary.scss";
+import EmployeeLineItem from "../../components/EmployeeLineItem";
+import InputBox from "../../components/InputBox";
+import "../../styles/pages/payment/PaySalary.scss";
 import { useEffect, useState } from "react";
 
 function PaySalary() {
@@ -38,7 +38,10 @@ function PaySalary() {
                 name={payment.name}
                 personnelNumber={payment.personnelNumber}
                 paymentValue={payment.paymentValue}
-                handleClick={() => console.log("yesss")}
+                handleClick={() =>
+                  (location.href =
+                    "/complete-payment/" + payment.personnelNumber + "/")
+                }
               />
             );
           })}
@@ -46,7 +49,10 @@ function PaySalary() {
             name="علی ماهر"
             personnelNumber={123}
             paymentValue={15000}
-            handleClick={() => console.log("yesss")}
+            handleClick={() =>
+              (location.href =
+                "/complete-payment/" + "123/")
+            }
           />
           <EmployeeLineItem
             name="علی ماهر"

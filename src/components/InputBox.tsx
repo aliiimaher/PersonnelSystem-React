@@ -26,7 +26,7 @@ function InputBox({
         ></textarea>
       ) : (
         <div
-          className="input-group mb-3 rounded"
+          className="input-group rounded"
           style={{ backgroundColor: "#162041", padding: "8px" }}
         >
           {icon ? <img src={icon} alt="Image" className="rounded" /> : ""}

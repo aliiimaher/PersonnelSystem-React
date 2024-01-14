@@ -1,0 +1,49 @@
+.complete-payment-main-container {
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+}
+
+.complete-payment-personal-info-items {
+  text-align: right;
+  font-family: KalamehThin;
+}
+
+.complete-payment-employee-info {
+  border: solid 4px #162041;
+  border-radius: 20px;
+  padding: 4%;
+
+  table {
+    width: 100%;
+  }
+}
+
+.complete-payment-employee-history-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.complete-payment-price-confirm {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+  }
+}
+
+.complete-payment-edit-value {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 80px;
+}

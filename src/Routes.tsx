@@ -7,7 +7,8 @@ import Dashboard from "./pages/userPanel/Dashboard";
 import LeaveReq from "./pages/LeaveReq";
 import Recruitment from "./pages/Recruitment";
 import AboutUs from "./pages/AboutUs";
-import PaySalary from "./pages/PaySalary";
+import PaySalary from "./pages/payment/PaySalary";
+import CompletePayment from "./pages/payment/CompletePayment";
 
 function MyRoutes() {
   return (
@@ -21,6 +22,10 @@ function MyRoutes() {
         <Route path="/recruitment" element={<Recruitment />} />
         <Route path="/pay-salary" element={<PaySalary />} />
         <Route path="/aboutus" element={<AboutUs />} />
+        <Route
+          path="/complete-payment/:personnelNumber"
+          element={<CompletePayment />}
+        />
       </Routes>
     </Router>
   );
