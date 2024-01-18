@@ -9,6 +9,7 @@ import Recruitment from "./pages/Recruitment";
 import AboutUs from "./pages/AboutUs";
 import PaySalary from "./pages/payment/PaySalary";
 import CompletePayment from "./pages/payment/CompletePayment";
+import NewsArchive from "./pages/NewsArchive";
 
 function MyRoutes() {
   return (
@@ -26,6 +27,7 @@ function MyRoutes() {
           path="/complete-payment/:personnelNumber"
           element={<CompletePayment />}
         />
+        <Route path="/news-archive" element={<NewsArchive />} />
       </Routes>
     </Router>
   );
