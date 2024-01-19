@@ -40,6 +40,7 @@ function CardH({
               src={pic}
               className={"img-fluid rounded" + picBorder}
               alt="card img"
+              style={{ height: 280 }}
             />
           </div>
           <div className="col-md-8">

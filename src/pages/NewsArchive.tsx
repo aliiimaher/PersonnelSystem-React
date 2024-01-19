@@ -8,7 +8,7 @@ function NewsArchive() {
   const [news, setNews] = useState([] as any[]);
   const fetchAllNews = () => {
     axios
-      .get("/.../")
+      .get("/news/list/")
       .then((response) => {
         setNews(response.data);
       })
@@ -27,9 +27,10 @@ function NewsArchive() {
           {news.map((item) => {
             return (
               <CardH
+                maxWidth={"100%"}
                 title={item.title}
-                shortDescription={item.shortDescription}
-                pic={item.pic}
+                shortDescription={item.content}
+                pic={item.image}
               />
             );
           })}
@@ -39,21 +40,6 @@ function NewsArchive() {
             title="تست"
             shortDescription="این تنها یک متن ساختگی از علی ماهر هست و هیچ محتوایی ندارد."
             pic={test}
-          />
-          <CardH
-            maxWidth={"100%"}
-            title="تست"
-            shortDescription="این تنها یک متن ساختگی از علی ماهر هست و هیچ محتوایی ندارد."
-          />
-          <CardH
-            maxWidth={"100%"}
-            title="تست"
-            shortDescription="این تنها یک متن ساختگی از علی ماهر هست و هیچ محتوایی ندارد."
-          />
-          <CardH
-            maxWidth={"100%"}
-            title="تست"
-            shortDescription="این تنها یک متن ساختگی از علی ماهر هست و هیچ محتوایی ندارد."
           />
         </div>
       </div>
