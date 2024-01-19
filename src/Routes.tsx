@@ -10,6 +10,7 @@ import AboutUs from "./pages/AboutUs";
 import PaySalary from "./pages/payment/PaySalary";
 import CompletePayment from "./pages/payment/CompletePayment";
 import NewsArchive from "./pages/NewsArchive";
+import TripHistory from "./pages/histories/TripHistory";
 
 function MyRoutes() {
   return (
@@ -28,6 +29,10 @@ function MyRoutes() {
           element={<CompletePayment />}
         />
         <Route path="/news-archive" element={<NewsArchive />} />
+        <Route
+          path="/history-trip/:personnelNumber"
+          element={<TripHistory />}
+        />
       </Routes>
     </Router>
   );

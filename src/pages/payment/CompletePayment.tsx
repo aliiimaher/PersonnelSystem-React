@@ -110,7 +110,7 @@ function CompletePayment() {
                 }
               />
               <Button
-                text="مشاهده جزئیات مرخصي"
+                text="مشاهده جزئیات مرخصی"
                 onclick={() =>
                   (location.href =
                     "/history-leave/" + selectedUser.personnelNumber + "/")
