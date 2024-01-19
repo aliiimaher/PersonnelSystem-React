@@ -4,7 +4,7 @@ import HomePage from "./pages/Home";
 import Test from "./pages/Test";
 import Login from "./pages/Login";
 import Dashboard from "./pages/userPanel/Dashboard";
-import LeaveReq from "./pages/LeaveReq";
+import LeaveReq from "./pages/leave/LeaveReq";
 import Recruitment from "./pages/Recruitment";
 import AboutUs from "./pages/AboutUs";
 import PaySalary from "./pages/payment/PaySalary";
@@ -13,6 +13,8 @@ import NewsArchive from "./pages/NewsArchive";
 import TripHistory from "./pages/histories/TripHistory";
 import LeaveHistory from "./pages/histories/LeaveHistory";
 import PaymentHistory from "./pages/histories/PaymentHistory";
+import CompleteLeaveRequest from "./pages/leave/CompleteLeaveRequest";
+import AllLeaveRequest from "./pages/leave/AllLeaveRequest";
 
 function MyRoutes() {
   return (
@@ -42,6 +44,11 @@ function MyRoutes() {
         <Route
           path="/history-payment/:personnelNumber"
           element={<PaymentHistory />}
+        />
+        <Route path="/accept-leave" element={<AllLeaveRequest />} />
+        <Route
+          path="/complete-leave-request/:personnelNumber"
+          element={<CompleteLeaveRequest />}
         />
       </Routes>
     </Router>

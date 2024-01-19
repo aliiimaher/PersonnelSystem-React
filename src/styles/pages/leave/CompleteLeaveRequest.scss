@@ -1,0 +1,34 @@
+.complete-leave-req-main-container {
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+}
+
+.complete-leave-req-personal-info-items {
+  text-align: right;
+  font-family: KalamehThin;
+}
+
+.complete-leave-req-employee-info {
+  border: solid 4px #162041;
+  border-radius: 20px;
+  padding: 4%;
+
+  table {
+    width: 100%;
+  }
+}
+
+.complete-leave-req-employee-history-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.complete-leave-req-confirm {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}

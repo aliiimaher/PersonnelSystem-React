@@ -1,8 +1,8 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "../styles/pages/LeaveReq.scss";
-import Button from "../components/Button";
+import "../../styles/pages/leave/LeaveReq.scss";
+import Button from "../../components/Button";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
