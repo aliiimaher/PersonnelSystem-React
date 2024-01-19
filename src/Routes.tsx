@@ -12,6 +12,7 @@ import CompletePayment from "./pages/payment/CompletePayment";
 import NewsArchive from "./pages/NewsArchive";
 import TripHistory from "./pages/histories/TripHistory";
 import LeaveHistory from "./pages/histories/LeaveHistory";
+import PaymentHistory from "./pages/histories/PaymentHistory";
 
 function MyRoutes() {
   return (
@@ -37,6 +38,10 @@ function MyRoutes() {
         <Route
           path="/history-leave/:personnelNumber"
           element={<LeaveHistory />}
+        />
+        <Route
+          path="/history-payment/:personnelNumber"
+          element={<PaymentHistory />}
         />
       </Routes>
     </Router>
