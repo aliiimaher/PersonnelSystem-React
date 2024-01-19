@@ -15,3 +15,9 @@
   border: solid #162041;
   border-radius: 20px;
 }
+
+.trip-history-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}
