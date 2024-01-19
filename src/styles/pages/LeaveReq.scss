@@ -26,7 +26,21 @@
   }
 }
 
-.leave-reason-input {
-  margin: auto;
+.leave-reason-input-form {
   width: 100%;
+}
+
+.leave-reason-input {
+  margin-bottom: 20px;
+  width: 100%;
+  height: 100px;
+
+  input:focus {
+    width: 100%;
+    height: 80%;
+    resize: vertical;
+    transition: width 0.4s ease-in-out;
+    border-radius: 8px;
+    padding: 8px;
+  }
 }

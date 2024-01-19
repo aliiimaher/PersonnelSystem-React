@@ -3,9 +3,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../styles/pages/LeaveReq.scss";
 import Button from "../components/Button";
-import InputBox from "../components/InputBox";
+import { useForm } from "react-hook-form";
+import axios from "axios";
 
 function LeaveReq() {
+  const { register, handleSubmit, watch } = useForm();
+
   const [selectedLeaveType, setSelectedLeaveType] = useState("");
   const [selectedStartDate, setSelectedStartDate] = useState<Date | null>();
   const [selectedEndDate, setSelectedEndDate] = useState<Date | null>();
@@ -14,11 +17,23 @@ function LeaveReq() {
     setSelectedLeaveType(event.target.value);
   };
 
-  const testHandle = () => {
-    console.log("start: ", selectedStartDate);
-    console.log("end: ", selectedEndDate);
-    console.log("type: ", selectedLeaveType);
+  const onSubmit = (data: any) => {
+    data.startDate = selectedStartDate;
+    data.endDate = selectedEndDate;
+    data.leaveType = selectedLeaveType;
+    data.leaveReason = watch("leaveReason");
+    console.log(data);
+    axios
+      .post("/.../", data)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+
+  console.log(watch("leaveReason"));
   return (
     <>
       <div className="leave-main-container">
@@ -50,10 +65,20 @@ function LeaveReq() {
             placeholderText="روز پايان"
           />
         </div>
-        <div className="leave-reason-input">
-          <InputBox type="textarea" placeHolder="علت مرخصی را شرح دهید" />
-        </div>
-        <Button text="ذخيره" onclick={testHandle} />
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="leave-reason-input-form"
+        >
+          <div className="leave-reason-input">
+            <label>علت مرخصی:</label>
+            <input
+              type="text"
+              {...register("leaveReason")}
+              placeholder="علت مرخصی خود را شرح دهید..."
+            />
+          </div>
+          <Button text="ذخيره" type="submit" />
+        </form>
       </div>
     </>
   );
