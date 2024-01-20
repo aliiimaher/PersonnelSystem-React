@@ -15,6 +15,7 @@ import LeaveHistory from "./pages/histories/LeaveHistory";
 import PaymentHistory from "./pages/histories/PaymentHistory";
 import CompleteLeaveRequest from "./pages/leave/CompleteLeaveRequest";
 import AllLeaveRequest from "./pages/leave/AllLeaveRequest";
+import ResTrip from "./pages/trip/ResTrip";
 
 function MyRoutes() {
   return (
@@ -50,6 +51,7 @@ function MyRoutes() {
           path="/complete-leave-request/:personnelNumber"
           element={<CompleteLeaveRequest />}
         />
+        <Route path="/res-trip" element={<ResTrip />} />
       </Routes>
     </Router>
   );

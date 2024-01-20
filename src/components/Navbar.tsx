@@ -31,7 +31,7 @@ function Navbar() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/trip">
+                <a className="nav-link" href="/res-trip">
                   سفر
                 </a>
               </li>
