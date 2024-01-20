@@ -2,7 +2,7 @@ interface Props {
   pic: string;
   title: string;
   shortDescription?: string;
-  btnText: string;
+  btnText?: string;
   linkTo?: string;
 }
 
@@ -14,9 +14,13 @@ function Card({ pic, title, shortDescription, btnText, linkTo }: Props) {
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
           <p className="card-text">{shortDescription}</p>
-          <a href={linkTo} className="btn btn-primary">
-            {btnText}
-          </a>
+          {linkTo ? (
+            <a href={linkTo} className="btn btn-primary">
+              {btnText}
+            </a>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </>
