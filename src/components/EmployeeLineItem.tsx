@@ -26,7 +26,7 @@ function EmployeeLineItem({
         </span>
         <span>
           <strong>مبلغ حقوق:</strong>
-          {paymentValue}
+          {paymentValue} تومان
         </span>
       </div>
     </>

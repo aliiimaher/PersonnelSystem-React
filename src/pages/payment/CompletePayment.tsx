@@ -7,16 +7,25 @@ import InputBox from "../../components/InputBox";
 import { useForm } from "react-hook-form";
 
 function CompletePayment() {
-  const { register, handleSubmit } = useForm();
+  const { register, watch } = useForm();
 
-  const submitPrice = (data: any) => {
+  const submitPrice = () => {
+    const data = { salary_value: watch("salary_value") };
     axios
       .post(
-        ".../",
-        data.paymentValue !== "" ? data.paymentValue : selectedUser.paymentValue
+        `/salary/modify-slip/${selectedUser.employee_details.personnelNumber}/ `,
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `token ${localStorage.getItem("token")}`,
+          },
+        }
       )
       .then((response) => {
         console.log(response);
+        alert("مبلغ با موفقیت تغییر یافت.");
+        location.href = "/complete-payment/" + personnelNumber + "/";
       })
       .catch((error: any) => {
         console.log(error);
@@ -24,14 +33,38 @@ function CompletePayment() {
   };
 
   const { personnelNumber } = useParams();
-  const [selectedUser, setSelectedUser] = useState<any>();
+  const [selectedUser, setSelectedUser] = useState<any>("");
   const [editPaymentValue, setEditPaymentValue] = useState(false);
 
   const fetchUser = () => {
     axios
-      .get(`/.../${personnelNumber}/`)
+      .get(`/salary/slip-details/${personnelNumber}/`)
       .then((response) => {
         setSelectedUser(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleConfirmPayment = () => {
+    axios
+      .post(
+        "/salary/payment-slip/" +
+          selectedUser.employee_details.personnelNumber +
+          "/",
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `token ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+        alert("پرداخت با موفقیت انجام شد.");
+        location.href = "/pay-salary/";
       })
       .catch((error) => {
         console.log(error);
@@ -58,7 +91,11 @@ function CompletePayment() {
                 </th>
                 <td>
                   <strong>
-                    {/* {selectedUser.first_name} {selectedUser.last_name} */}
+                    {selectedUser
+                      ? selectedUser.employee_details.first_name +
+                        " " +
+                        selectedUser.employee_details.last_name
+                      : ""}
                   </strong>
                 </td>
 
@@ -67,38 +104,52 @@ function CompletePayment() {
                     شماره پرسنلی:
                   </div>
                 </th>
-                <td>{/* <strong>{selectedUser.personnelNumber}</strong> */}</td>
+                <td>
+                  <strong>
+                    {selectedUser
+                      ? selectedUser.employee_details.personnelNumber
+                      : ""}
+                  </strong>
+                </td>
               </tr>
             </table>
             <div className="complete-payment-price-confirm">
               <div>
-                حقوق محاسبه شده: 100
-                {/* <strong>{selectedUser.paymentValue}</strong> */}
+                حقوق محاسبه شده:
+                <strong> {selectedUser ? selectedUser.salary_value : 0}</strong>
               </div>
-              <form onSubmit={handleSubmit(submitPrice)}>
-                <div className="complete-payment-edit-value">
-                  <Button
-                    text="به روز رسانی"
-                    btn100Width="yes"
-                    onclick={() => {
-                      setEditPaymentValue(!editPaymentValue);
-                    }}
-                  />
-                  {editPaymentValue ? (
+              <div className="complete-payment-edit-value">
+                <Button
+                  text="به روز رسانی"
+                  btn100Width="yes"
+                  onclick={() => setEditPaymentValue(!editPaymentValue)}
+                />
+                {editPaymentValue ? (
+                  <>
                     <InputBox
                       placeHolder="مبلغ جدید"
-                      reactHookFrom={register("paymentValue")}
+                      reactHookFrom={register("salary_value")}
                     />
-                  ) : (
-                    ""
-                  )}
-                </div>
-                <Button
-                  text="تایید و پرداخت"
-                  backgroundColor="green"
-                  type="submit"
-                />
-              </form>
+                    <Button
+                      text="اعمال تغییر"
+                      type="submit"
+                      btn100Width="yes"
+                      onclick={() => {
+                        setEditPaymentValue(!editPaymentValue);
+                        submitPrice();
+                      }}
+                    />
+                  </>
+                ) : (
+                  ""
+                )}
+              </div>
+              <Button
+                text="تایید و پرداخت"
+                backgroundColor="green"
+                type="submit"
+                onclick={handleConfirmPayment}
+              />
             </div>
             <hr />
             <div className="complete-payment-employee-history-info">

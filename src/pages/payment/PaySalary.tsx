@@ -9,7 +9,12 @@ function PaySalary() {
 
   const fetchAllPayment = () => {
     axios
-      .get("/.../")
+      .get("/salary/slip/", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `token ${localStorage.getItem("token")}`,
+        },
+      })
       .then((response) => {
         setPayments(response.data);
       })
@@ -35,13 +40,20 @@ function PaySalary() {
           {payments.map((payment) => {
             return (
               <EmployeeLineItem
-                name={payment.name}
-                personnelNumber={payment.personnelNumber}
-                paymentValue={payment.paymentValue}
-                handleClick={() =>
-                  (location.href =
-                    "/complete-payment/" + payment.personnelNumber + "/")
+                name={
+                  payment.employee_details.first_name +
+                  " " +
+                  payment.employee_details.last_name
                 }
+                personnelNumber={payment.employee_details.personnelNumber}
+                paymentValue={payment.salary_value}
+                handleClick={() => {
+                  (location.href =
+                    "/complete-payment/" +
+                    payment.employee_details.personnelNumber +
+                    "/"),
+                    console.log(payment.employee_details.personnelNumber);
+                }}
               />
             );
           })}
@@ -49,10 +61,7 @@ function PaySalary() {
             name="علی ماهر"
             personnelNumber={123}
             paymentValue={15000}
-            handleClick={() =>
-              (location.href =
-                "/complete-payment/" + "123/")
-            }
+            handleClick={() => (location.href = "/complete-payment/" + "123/")}
           />
           <EmployeeLineItem
             name="علی ماهر"

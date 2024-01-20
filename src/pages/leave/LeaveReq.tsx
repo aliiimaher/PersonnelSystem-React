@@ -18,13 +18,14 @@ function LeaveReq() {
   };
 
   const onSubmit = (data: any) => {
-    data.startDate = selectedStartDate;
-    data.endDate = selectedEndDate;
-    data.leaveType = selectedLeaveType;
-    data.leaveReason = watch("leaveReason");
+    data.start_date = selectedStartDate;
+    data.end_date = selectedEndDate;
+    // شمخخخخخخخخخخخخخخخخ
+    data.reason = "Sick";
+    data.description = watch("reason");
     console.log(data);
     axios
-      .post("/.../", data)
+      .post("/leave/request/", data)
       .then((response) => {
         console.log(response.data);
       })
@@ -73,7 +74,7 @@ function LeaveReq() {
             <label>علت مرخصی:</label>
             <input
               type="text"
-              {...register("leaveReason")}
+              {...register("reason")}
               placeholder="علت مرخصی خود را شرح دهید..."
             />
           </div>
