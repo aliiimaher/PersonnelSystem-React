@@ -1,6 +1,4 @@
 import pic1 from "../assets/pic/asalooye1.jpg";
-import Card from "../components/Card";
-import CardH from "../components/CardH";
 import Slider from "../components/Slider";
 import "../styles/pages/Home.scss";
 
