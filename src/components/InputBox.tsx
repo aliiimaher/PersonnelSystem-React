@@ -7,6 +7,7 @@ interface Props {
   type?: "text" | "password" | "textarea";
   onchange?: any;
   value?: any;
+  maxWidth?: string;
 }
 
 function InputBox({
@@ -16,6 +17,7 @@ function InputBox({
   type = "text",
   onchange,
   value,
+  maxWidth,
 }: Props) {
   return (
     <>
@@ -27,7 +29,11 @@ function InputBox({
       ) : (
         <div
           className="input-group rounded"
-          style={{ backgroundColor: "#162041", padding: "8px" }}
+          style={{
+            backgroundColor: "#162041",
+            padding: "8px",
+            maxWidth: maxWidth,
+          }}
         >
           {icon ? <img src={icon} alt="Image" className="rounded" /> : ""}
           <input

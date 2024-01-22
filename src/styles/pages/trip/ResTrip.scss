@@ -12,3 +12,18 @@
   font-family: KalamehBold;
   margin-bottom: 8px;
 }
+
+.res-trip-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  padding: 1%;
+}
+
+.res-trip-form-item {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  column-gap: 8px;
+  align-items: center;
+}
