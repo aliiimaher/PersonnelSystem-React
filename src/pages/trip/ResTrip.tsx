@@ -1,19 +1,51 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "../../styles/pages/trip/ResTrip.scss";
 import InputBox from "../../components/InputBox";
 import DatePicker from "react-datepicker";
 import LandTrip from "../../components/tripTypes/LandTrip";
-import axios from "axios";
 import Button from "../../components/Button";
 import AirTrip from "../../components/tripTypes/AirTrip";
 import VoyageTrip from "../../components/tripTypes/VoyageTrip";
+import axios from "axios";
+import { useForm } from "react-hook-form";
 
 function ResTrip() {
+  const { register, watch } = useForm();
+
   const [selectedTripType, setSelectedTripType] = useState("");
   const [selectedDate, setSelectedDate] = useState<Date | null>();
 
   const handleSelectType = (event: any) => {
     setSelectedTripType(event.target.value);
+  };
+
+  const handleConfirmTrip = () => {
+    const data = {
+      src: watch("src"),
+      dst: watch("dst"),
+      date: selectedDate,
+    };
+    axios
+      .post("/.../", data, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `token ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        alert("سفر با موفقیت ثبت شد.");
+        window.localStorage.removeItem("selectedSeat");
+        location.href = "/profile/";
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleCancelTrip = () => {
+    window.localStorage.removeItem("selectedSeat");
+    location.reload();
   };
 
   return (
@@ -34,9 +66,17 @@ function ResTrip() {
         <div className="res-trip-form">
           <div className="res-trip-form-item">
             <label>مبدا</label>
-            <InputBox placeHolder="مبدا را وارد کنید." maxWidth="80%" />
+            <InputBox
+              placeHolder="مبدا را وارد کنید."
+              maxWidth="80%"
+              reactHookFrom={register("src")}
+            />
             <label>مقصد</label>
-            <InputBox placeHolder="مقصد را وارد کنید." maxWidth="80%" />
+            <InputBox
+              placeHolder="مقصد را وارد کنید."
+              maxWidth="80%"
+              reactHookFrom={register("dst")}
+            />
           </div>
           <div className="res-trip-form-item">
             <label>تاریخ</label>
@@ -55,15 +95,24 @@ function ResTrip() {
           ) : selectedTripType === "زمینی" ? (
             <LandTrip />
           ) : selectedTripType === "دریایی" ? (
-            <VoyageTrip />  
+            <VoyageTrip />
           ) : (
             ""
           )}
         </div>
         <hr />
         <div className="res-trip-form-btn">
-          <Button text="انصراف" btn100Width="yes" />
-          <Button text="ثبت سفر" btn100Width="yes" backgroundColor="green" />
+          <Button
+            text="انصراف"
+            btn100Width="yes"
+            onclick={() => handleCancelTrip()}
+          />
+          <Button
+            text="ثبت سفر"
+            btn100Width="yes"
+            backgroundColor="green"
+            onclick={() => handleConfirmTrip()}
+          />
         </div>
       </div>
     </div>

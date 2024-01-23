@@ -6,6 +6,13 @@
 
 .air-trip-pic {
   width: 400px;
+
+  img {
+    transition: transform 1s;
+  }
+  img:hover {
+    transform: scale(1.3);
+  }
 }
 
 @media screen and (max-width: 768px) {
