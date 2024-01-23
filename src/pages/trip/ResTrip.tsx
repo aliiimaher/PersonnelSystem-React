@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../styles/pages/trip/ResTrip.scss";
 import InputBox from "../../components/InputBox";
 import DatePicker from "react-datepicker";
 import LandTrip from "../../components/tripTypes/LandTrip";
+import axios from "axios";
+import Button from "../../components/Button";
+import AirTrip from "../../components/tripTypes/AirTrip";
+import VoyageTrip from "../../components/tripTypes/VoyageTrip";
 
 function ResTrip() {
   const [selectedTripType, setSelectedTripType] = useState("");
@@ -45,15 +49,22 @@ function ResTrip() {
           </div>
         </div>
         <hr />
-        {selectedTripType === "هوایی" ? (
-          "Airplane"
-        ) : selectedTripType === "زمینی" ? (
-          <LandTrip />
-        ) : selectedTripType === "دریایی" ? (
-          "دریایی"
-        ) : (
-          ""
-        )}
+        <div>
+          {selectedTripType === "هوایی" ? (
+            <AirTrip />
+          ) : selectedTripType === "زمینی" ? (
+            <LandTrip />
+          ) : selectedTripType === "دریایی" ? (
+            <VoyageTrip />  
+          ) : (
+            ""
+          )}
+        </div>
+        <hr />
+        <div className="res-trip-form-btn">
+          <Button text="انصراف" btn100Width="yes" />
+          <Button text="ثبت سفر" btn100Width="yes" backgroundColor="green" />
+        </div>
       </div>
     </div>
   );

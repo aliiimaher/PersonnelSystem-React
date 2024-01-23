@@ -1,0 +1,15 @@
+.air-trip-main-container {
+  display: flex;
+  justify-content: center;
+  margin: 1%;
+}
+
+.air-trip-pic {
+  width: 400px;
+}
+
+@media screen and (max-width: 768px) {
+  .air-trip-pic {
+    width: 100%;
+  }
+}

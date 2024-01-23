@@ -1,3 +1,15 @@
+.land-trip-main-main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1%;
+}
+
+.land-trip-pic {
+  width: 400px;
+}
+
 .land-trip-main-container {
   img {
     width: 50px;
@@ -23,4 +35,17 @@
 
 .land-trip-seats-row-no {
   cursor: default;
+}
+
+@media screen and (max-width: 768px) {
+  .land-trip-main-main-container {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  .land-trip-pic {
+    width: 100%;
+  }
+  .land-trip-main-container {
+    width: 100%;
+  }
 }

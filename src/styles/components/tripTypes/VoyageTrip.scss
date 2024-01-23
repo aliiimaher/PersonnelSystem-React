@@ -1,0 +1,15 @@
+.voyage-trip-main-container {
+  display: flex;
+  justify-content: center;
+  margin: 1%;
+}
+
+.voyage-trip-pic {
+  width: 400px;
+}
+
+@media screen and (max-width: 768px) {
+  .voyage-trip-pic {
+    width: 100%;
+  }
+}
