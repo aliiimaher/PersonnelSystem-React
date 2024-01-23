@@ -16,6 +16,8 @@ import PaymentHistory from "./pages/histories/PaymentHistory";
 import CompleteLeaveRequest from "./pages/leave/CompleteLeaveRequest";
 import AllLeaveRequest from "./pages/leave/AllLeaveRequest";
 import ResTrip from "./pages/trip/ResTrip";
+import AllTripRequest from "./pages/trip/AllTripRequest";
+import CompleteTripRequest from "./pages/trip/CompleteTripRequest";
 
 function MyRoutes() {
   return (
@@ -52,6 +54,11 @@ function MyRoutes() {
           element={<CompleteLeaveRequest />}
         />
         <Route path="/res-trip" element={<ResTrip />} />
+        <Route path="/accept-trip" element={<AllTripRequest />} />
+        <Route
+          path="/complete-trip-request/:id"
+          element={<CompleteTripRequest />}
+        />
       </Routes>
     </Router>
   );

@@ -1,0 +1,23 @@
+.all-trip-req-main-container {
+  display: flex;
+  flex-direction: column;
+  margin: 2%;
+  padding: 1%;
+  border: solid #162041;
+  border-radius: 20px;
+}
+
+.all-trip-req-title {
+  background-color: #162041;
+  border-radius: 8px;
+  color: #e7e7e7;
+  padding: 4px;
+  font-family: KalamehBold;
+  margin-bottom: 8px;
+}
+
+.all-trip-req-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}

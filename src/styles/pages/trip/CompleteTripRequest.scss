@@ -1,0 +1,35 @@
+.complete-trip-req-main-container {
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .complete-trip-req-personal-info-items {
+    text-align: right;
+    font-family: KalamehThin;
+  }
+  
+  .complete-trip-req-employee-info {
+    border: solid 4px #162041;
+    border-radius: 20px;
+    padding: 4%;
+  
+    table {
+      width: 100%;
+    }
+  }
+  
+  .complete-trip-req-employee-history-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .complete-trip-req-confirm {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
