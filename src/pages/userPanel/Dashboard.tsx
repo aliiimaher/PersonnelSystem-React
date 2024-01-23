@@ -15,7 +15,6 @@ function Dashboard() {
   const thisUser: any = useContext(UserContext);
   return (
     <>
-      {/* {notif && <Notif />} */}
       <div className="panel-dashboard">
         <div className="panel-dashboard-right-side">
           <PanelSideBarMenu />
@@ -86,19 +85,31 @@ function Dashboard() {
             <h3>تاریخچه‌های من</h3>
             <div className="panel-dashboard-buttons">
               <Button
-                onclick={() => (window.location.href = "/history/trip")}
+                onclick={() =>
+                  (window.location.href =
+                    "/history-trip/" + thisUser.personnelNumber + "/")
+                }
                 text="تاریخچه‌های سفر"
               />
               <Button
-                onclick={() => (window.location.href = "/history/leave")}
+                onclick={() =>
+                  (window.location.href =
+                    "/history-leave/" + thisUser.personnelNumber + "/")
+                }
                 text="تاریخچه‌های مرخصی"
               />
               <Button
-                onclick={() => (window.location.href = "/history/payment")}
+                onclick={() =>
+                  (window.location.href =
+                    "/history-payment/" + thisUser.personnelNumber + "/")
+                }
                 text="تاریخچه‌های حقوق"
               />
               <Button
-                onclick={() => (window.location.href = "/history/msg")}
+                onclick={() =>
+                  (window.location.href =
+                    "/history-msg/" + thisUser.personnelNumber + "/")
+                }
                 text="تاریخچه‌های پیام"
               />
             </div>

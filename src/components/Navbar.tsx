@@ -10,7 +10,7 @@ function Navbar() {
       >
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
-            جواد
+            MZGRCO
           </a>
           <button
             className="navbar-toggler"
@@ -77,6 +77,7 @@ function Navbar() {
               placeholder="چی میخوای؟"
               aria-label="Search"
             />
+            <span style={{ width: "4px" }}></span>
             <button className="btn btn-outline-success" type="submit">
               بگرد
             </button>

@@ -20,7 +20,7 @@ function Login() {
   const submitForm = (data: any) => {
     axios
       .post("user/login/", data)
-      .then((response) => { 
+      .then((response) => {
         localStorage.setItem("token", response.data.token);
         window.location.href = "/profile";
         console.log(response);

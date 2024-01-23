@@ -7,7 +7,7 @@ import "../../styles/pages/leave/CompleteLeaveRequest.scss";
 function CompleteLeaveRequest() {
   const { personnelNumber } = useParams();
   const [selectedUser, setSelectedUser] = useState<any>();
-  const [selectedLeaveReq, setSelectedLeaveReq] = useState<any>({});
+  const [_selectedLeaveReq, setSelectedLeaveReq] = useState<any>({});
 
   const fetchUser = () => {
     axios

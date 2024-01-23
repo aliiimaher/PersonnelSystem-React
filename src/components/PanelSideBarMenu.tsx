@@ -10,7 +10,6 @@ function PanelSideBarMenu() {
   const thisUser: any = useContext(UserContext);
   var image_url = axios.defaults.baseURL + "/" + thisUser.profile_image;
 
-  // ========== logout api ==========
   function handleLogout() {
     axios.post("/user/logout/", null, {
       headers: {
@@ -21,7 +20,6 @@ function PanelSideBarMenu() {
 
   return (
     <>
-      {/* {isLoading && <Loading />} */}
       <div className="panel-side-bar-menu-container">
         <div className="panel-side-bar-menu-person">
           <img
@@ -38,9 +36,6 @@ function PanelSideBarMenu() {
         </div>
         <li className="list-item-side-bar-menu">
           <Link to="/profile">داشبورد</Link>
-        </li>
-        <li className="list-item-side-bar-menu">
-          <Link to="/...">فاکتورها</Link>
         </li>
         {/* here */}
         {thisUser.role === "tripadmin" ? (
@@ -76,7 +71,6 @@ function PanelSideBarMenu() {
           <Link
             to={location}
             onClick={() => {
-              //   setIsLoading(true);
               handleLogout();
               window.localStorage.removeItem("token");
               window.location.href = "/";

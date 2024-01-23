@@ -6,7 +6,7 @@ import axios from "axios";
 
 function CompleteTripRequest() {
   const { tripId } = useParams();
-  const [trip, setTrip] = useState<any>();
+  const [_trip, setTrip] = useState<any>();
   const [selectedUser, setSelectedUser] = useState<any>();
 
   const fetchTrip = () => {

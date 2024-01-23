@@ -24,7 +24,10 @@ function ResTrip() {
       src: watch("src"),
       dst: watch("dst"),
       date: selectedDate,
+      type: selectedTripType,
+      seat: window.localStorage.getItem("selectedSeat"),
     };
+    console.log(data);
     axios
       .post("/.../", data, {
         headers: {
