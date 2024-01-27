@@ -3,28 +3,22 @@ import Button from "../../components/Button";
 import "../../styles/pages/trip/CompleteTripRequest.scss";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import handleConvertToGoodDateFormat from "../../helper/handleConvertToGoodDateFormat";
 
 function CompleteTripRequest() {
-  const { tripId } = useParams();
-  const [_trip, setTrip] = useState<any>();
-  const [selectedUser, setSelectedUser] = useState<any>();
+  const { trip_id } = useParams();
+  const [trip, setTrip] = useState<any>();
 
   const fetchTrip = () => {
     axios
-      .get(`/..../${tripId}/`)
+      .get(`/trip/detail/${trip_id}/`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `token ${localStorage.getItem("token")}`,
+        },
+      })
       .then((response) => {
         setTrip(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const fetchUser = () => {
-    axios
-      .get(`/.../${tripId}/`)
-      .then((response) => {
-        setSelectedUser(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -34,7 +28,7 @@ function CompleteTripRequest() {
   const handleAcceptTrip = () => {
     const data = {};
     axios
-      .post("/.../" + tripId + "/", data, {
+      .post("/trip/accept/" + trip_id + "/", data, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `token ${localStorage.getItem("token")}`,
@@ -43,7 +37,7 @@ function CompleteTripRequest() {
       .then((response) => {
         console.log(response);
         alert("سفر با موفقیت تایید شد.");
-        location.href = "/complete-trip-request/" + tripId + "/";
+        location.href = "/complete-trip-request/";
       })
       .catch((error: any) => {
         console.log(error);
@@ -53,7 +47,7 @@ function CompleteTripRequest() {
   const handleRejectTrip = () => {
     const data = {};
     axios
-      .post("/.../" + tripId + "/", data, {
+      .post("/trip/reject/" + trip_id + "/", data, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `token ${localStorage.getItem("token")}`,
@@ -62,7 +56,7 @@ function CompleteTripRequest() {
       .then((response) => {
         console.log(response);
         alert("سفر با موفقیت رد شد.");
-        location.href = "/complete-trip-request/" + tripId + "/";
+        location.href = "/accept-trip";
       })
       .catch((error: any) => {
         console.log(error);
@@ -71,7 +65,6 @@ function CompleteTripRequest() {
 
   useEffect(() => {
     fetchTrip();
-    fetchUser();
   }, []);
 
   return (
@@ -89,7 +82,8 @@ function CompleteTripRequest() {
               </th>
               <td>
                 <strong>
-                  {/* {selectedUser.first_name} {selectedUser.last_name} */}
+                  {trip ? trip.employee_detail.first_name : ""}{" "}
+                  {trip ? trip.employee_detail.last_name : ""}
                 </strong>
               </td>
 
@@ -98,7 +92,11 @@ function CompleteTripRequest() {
                   شماره پرسنلی:
                 </div>
               </th>
-              <td>{/* <strong>{selectedUser.personnelNumber}</strong> */}</td>
+              <td>
+                <strong>
+                  {trip ? trip.employee_detail.personnelNumber : ""}
+                </strong>
+              </td>
             </tr>
           </table>
           <hr />
@@ -109,13 +107,17 @@ function CompleteTripRequest() {
                   مبدا:
                 </div>
               </th>
-              <td>{/* <strong>{selectedTripReq.src}</strong> */}</td>
+              <td>
+                <strong>{trip ? trip.source : ""}</strong>
+              </td>
               <th className="complete-trip-req-th">
                 <div className="complete-trip-req-personal-info-items">
                   مقصد:
                 </div>
               </th>
-              <td>{/* <strong>{selectedTripReq.dst}</strong> */}</td>
+              <td>
+                <strong>{trip ? trip.destination : ""}</strong>
+              </td>
             </tr>
             <tr>
               <th className="complete-trip-req-th">
@@ -123,9 +125,13 @@ function CompleteTripRequest() {
                   تاریخ سفر:
                 </div>
               </th>
-              <td>{/* <strong>{selectedTripReq.startDate}</strong> */}</td>
-              {
-                /*trip.type*/ "زمینی" === "زمینی" ? (
+              <td>
+                <strong>
+                  {trip ? handleConvertToGoodDateFormat(trip.datetime) : ""}
+                </strong>
+              </td>
+              {trip ? (
+                trip.type === "زمینی" ? (
                   <>
                     <th className="complete-trip-req-th">
                       <div className="complete-trip-req-personal-info-items">
@@ -133,13 +139,15 @@ function CompleteTripRequest() {
                       </div>
                     </th>
                     <td>
-                      {/* <strong>{selectedTripReq.seatNumber}</strong> */}
+                      <strong>{trip ? trip.seat : ""}</strong>
                     </td>
                   </>
                 ) : (
-                  "mooze"
+                  ""
                 )
-              }
+              ) : (
+                ""
+              )}
             </tr>
           </table>
           <hr />
@@ -148,21 +156,25 @@ function CompleteTripRequest() {
               text="مشاهده جزئیات سفر"
               onclick={() =>
                 (location.href =
-                  "/history-trip/" + selectedUser.personnelNumber + "/")
+                  "/history-trip/" + trip.employee_detail.personnelNumber + "/")
               }
             />
             <Button
               text="مشاهده جزئیات مرخصی"
               onclick={() =>
                 (location.href =
-                  "/history-leave/" + selectedUser.personnelNumber + "/")
+                  "/history-leave/" +
+                  trip.employee_detail.personnelNumber +
+                  "/")
               }
             />
             <Button
               text="مشاهده جزئیات حقوق"
               onclick={() =>
                 (location.href =
-                  "/history-payment/" + selectedUser.personnelNumber + "/")
+                  "/history-payment/" +
+                  trip.employee_detail.personnelNumber +
+                  "/")
               }
             />
           </div>

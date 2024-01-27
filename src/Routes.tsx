@@ -50,13 +50,13 @@ function MyRoutes() {
         />
         <Route path="/accept-leave" element={<AllLeaveRequest />} />
         <Route
-          path="/complete-leave-request/:personnelNumber"
+          path="/complete-leave-request/:leave_id"
           element={<CompleteLeaveRequest />}
         />
         <Route path="/res-trip" element={<ResTrip />} />
         <Route path="/accept-trip" element={<AllTripRequest />} />
         <Route
-          path="/complete-trip-request/:id"
+          path="/complete-trip-request/:trip_id"
           element={<CompleteTripRequest />}
         />
       </Routes>

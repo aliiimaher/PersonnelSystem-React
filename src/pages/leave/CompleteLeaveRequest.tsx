@@ -5,25 +5,19 @@ import axios from "axios";
 import "../../styles/pages/leave/CompleteLeaveRequest.scss";
 
 function CompleteLeaveRequest() {
-  const { personnelNumber } = useParams();
-  const [selectedUser, setSelectedUser] = useState<any>();
-  const [_selectedLeaveReq, setSelectedLeaveReq] = useState<any>({});
-
-  const fetchUser = () => {
-    axios
-      .get(`/.../${personnelNumber}/`)
-      .then((response) => {
-        setSelectedUser(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  const { leave_id } = useParams();
+  const [selectedLeaveReq, setSelectedLeaveReq] = useState<any>();
 
   const fetchLeaveReq = () => {
     axios
-      .get(`/.../${personnelNumber}/`)
+      .get(`/leave/details/${leave_id}/`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `token ${localStorage.getItem("token")}`,
+        },
+      })
       .then((response) => {
+        console.log(response.data);
         setSelectedLeaveReq(response.data);
       })
       .catch((error) => {
@@ -31,8 +25,45 @@ function CompleteLeaveRequest() {
       });
   };
 
+  const handleAcceptLeave = () => {
+    const data = {};
+    axios
+      .post("/leave/approve/" + leave_id + "/", data, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `token ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        alert("مرخصی با موفقیت تایید شد.");
+        location.href = "/accept-leave/";
+      })
+      .catch((error: any) => {
+        console.log(error);
+      });
+  };
+
+  const handleRejectLeave = () => {
+    const data = {};
+    axios
+      .post("/leave/reject/" + leave_id + "/", data, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `token ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        alert("مرخصی با موفقیت رد شد.");
+        location.href = "/accept-leave/";
+      })
+      .catch((error: any) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
-    fetchUser();
     fetchLeaveReq();
   }, []);
 
@@ -51,7 +82,11 @@ function CompleteLeaveRequest() {
               </th>
               <td>
                 <strong>
-                  {/* {selectedUser.first_name} {selectedUser.last_name} */}
+                  {selectedLeaveReq
+                    ? selectedLeaveReq.employee_details.first_name +
+                      " " +
+                      selectedLeaveReq.employee_details.last_name
+                    : ""}
                 </strong>
               </td>
 
@@ -60,7 +95,13 @@ function CompleteLeaveRequest() {
                   شماره پرسنلی:
                 </div>
               </th>
-              <td>{/* <strong>{selectedUser.personnelNumber}</strong> */}</td>
+              <td>
+                <strong>
+                  {selectedLeaveReq
+                    ? selectedLeaveReq.employee_details.personnelNumber
+                    : ""}
+                </strong>
+              </td>
             </tr>
           </table>
           <hr />
@@ -71,14 +112,22 @@ function CompleteLeaveRequest() {
                   تاریخ شروع:
                 </div>
               </th>
-              <td>{/* <strong>{selectedLeaveReq.startDate}</strong> */}</td>
+              <td>
+                <strong>
+                  {selectedLeaveReq ? selectedLeaveReq.start_date : ""}
+                </strong>
+              </td>
 
               <th className="complete-leave-req-th">
                 <div className="complete-leave-req-personal-info-items">
                   تاریخ پایان:
                 </div>
               </th>
-              <td>{/* <strong>{selectedLeaveReq.endDate}</strong> */}</td>
+              <td>
+                <strong>
+                  {selectedLeaveReq ? selectedLeaveReq.end_date : ""}
+                </strong>
+              </td>
             </tr>
             <tr>
               <th className="complete-leave-req-th">
@@ -86,20 +135,32 @@ function CompleteLeaveRequest() {
                   نوع مرخصی:
                 </div>
               </th>
-              <td>{/* <strong>{selectedLeaveReq.leaveType}</strong> */}</td>
+              <td>
+                <strong>
+                  {selectedLeaveReq ? selectedLeaveReq.reason : ""}
+                </strong>
+              </td>
 
               <th className="complete-leave-req-th">
                 <div className="complete-leave-req-personal-info-items">
                   علت مرخصی:
                 </div>
               </th>
-              <td>{/* <strong>{selectedLeaveReq.leaveReason}</strong> */}</td>
+              <td>
+                <strong>
+                  {selectedLeaveReq ? selectedLeaveReq.description : ""}
+                </strong>
+              </td>
             </tr>
           </table>
           <hr />
           <div className="complete-leave-req-confirm">
-            <Button text="رد" type="submit" />
-            <Button text="تایید" backgroundColor="green" type="submit" />
+            <Button text="رد" onclick={() => handleRejectLeave()} />
+            <Button
+              text="تایید"
+              backgroundColor="green"
+              onclick={() => handleAcceptLeave()}
+            />
           </div>
           <hr />
           <div className="complete-payment-employee-history-info">
@@ -107,21 +168,27 @@ function CompleteLeaveRequest() {
               text="مشاهده جزئیات سفر"
               onclick={() =>
                 (location.href =
-                  "/history-trip/" + selectedUser.personnelNumber + "/")
+                  "/history-trip/" +
+                  selectedLeaveReq.employee_details.personnelNumber +
+                  "/")
               }
             />
             <Button
               text="مشاهده جزئیات مرخصی"
               onclick={() =>
                 (location.href =
-                  "/history-leave/" + selectedUser.personnelNumber + "/")
+                  "/history-leave/" +
+                  selectedLeaveReq.employee_details.personnelNumber +
+                  "/")
               }
             />
             <Button
               text="مشاهده جزئیات حقوق"
               onclick={() =>
                 (location.href =
-                  "/history-payment/" + selectedUser.personnelNumber + "/")
+                  "/history-payment/" +
+                  selectedLeaveReq.employee_details.personnelNumber +
+                  "/")
               }
             />
           </div>

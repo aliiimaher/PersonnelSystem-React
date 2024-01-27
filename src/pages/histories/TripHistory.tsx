@@ -9,7 +9,12 @@ function TripHistory() {
   const [trips, setTrips] = useState([] as any[]);
   const fetchAllTrips = () => {
     axios
-      .get(`/.../{${personnelNumber}}/`)
+      .get(`/trip/all/${personnelNumber}/`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `token ${localStorage.getItem("token")}`,
+        },
+      })
       .then((response) => {
         setTrips(response.data);
       })
@@ -32,17 +37,11 @@ function TripHistory() {
               <TripHistoryLineItem
                 source={trip.source}
                 destination={trip.destination}
-                tripDate={trip.tripDate}
+                tripDate={trip.datetime}
                 duration={trip.duration}
               />
             );
           })}
-          <TripHistoryLineItem
-            source="عسلویه"
-            destination="شیراز"
-            tripDate="99/99/99"
-            duration={2}
-          />
         </div>
       </div>
     </>

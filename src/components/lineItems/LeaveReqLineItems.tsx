@@ -1,7 +1,7 @@
 import "../../styles/components/lineItems/leaveReqLineItem.scss";
 
 interface LeaveReqLineItemsProps {
-  reqDate: string;
+  reqDate?: string;
   fullName: string;
   personnelNumber: number;
   onClick?: () => void;
@@ -16,7 +16,7 @@ function LeaveReqLineItems({
   return (
     <div className="leave-req-line-item-main-container" onClick={onClick}>
       <div>
-        تاریخ: <strong>{reqDate}</strong>
+        تاریخ ثبت درخواست: <strong>{reqDate}</strong>
       </div>
       <div>
         اسم: <strong>{fullName}</strong>

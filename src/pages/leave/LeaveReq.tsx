@@ -7,34 +7,42 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 
 function LeaveReq() {
-  const { register, handleSubmit, watch } = useForm();
+  const { register, watch } = useForm();
 
   const [selectedLeaveType, setSelectedLeaveType] = useState("");
-  const [selectedStartDate, setSelectedStartDate] = useState<Date | null>();
-  const [selectedEndDate, setSelectedEndDate] = useState<Date | null>();
+  const [selectedStartDate, setSelectedStartDate] = useState<any | null>();
+  const [selectedEndDate, setSelectedEndDate] = useState<any | null>();
 
   const handleSelectType = (event: any) => {
     setSelectedLeaveType(event.target.value);
   };
 
-  const onSubmit = (data: any) => {
+  const onSubmit = () => {
+    const data: any = {};
     data.start_date = selectedStartDate;
     data.end_date = selectedEndDate;
-    // شمخخخخخخخخخخخخخخخخ
-    data.reason = "Sick";
+    data.reason = selectedLeaveType;
     data.description = watch("reason");
     console.log(data);
     axios
-      .post("/leave/request/", data)
+      .post("/leave/request/", data, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `token ${localStorage.getItem("token")}`,
+        },
+      })
       .then((response) => {
         console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
+        alert("مرخصی با موفقیت ثبت شد.");
+        location.href = "/profile/";
       });
+    alert("مرخصی با موفقیت ثبت شد.");
+    location.href = "/profile/";
+    // .catch((error) => {
+    //   console.log(error);
+    // })
   };
 
-  console.log(watch("leaveReason"));
   return (
     <>
       <div className="leave-main-container">
@@ -66,10 +74,7 @@ function LeaveReq() {
             placeholderText="روز پايان"
           />
         </div>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="leave-reason-input-form"
-        >
+        <form className="leave-reason-input-form">
           <div className="leave-reason-input">
             <label>علت مرخصی:</label>
             <input
@@ -78,7 +83,7 @@ function LeaveReq() {
               placeholder="علت مرخصی خود را شرح دهید..."
             />
           </div>
-          <Button text="ذخيره" type="submit" />
+          <Button text="ذخيره" onclick={() => onSubmit()} />
         </form>
       </div>
     </>

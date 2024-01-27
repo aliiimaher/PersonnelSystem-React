@@ -21,15 +21,15 @@ function ResTrip() {
 
   const handleConfirmTrip = () => {
     const data = {
-      src: watch("src"),
-      dst: watch("dst"),
-      date: selectedDate,
+      source: watch("src"),
+      destination: watch("dst"),
       type: selectedTripType,
       seat: window.localStorage.getItem("selectedSeat"),
+      datetime: selectedDate,
     };
     console.log(data);
     axios
-      .post("/.../", data, {
+      .post("/trip/request/", data, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `token ${localStorage.getItem("token")}`,

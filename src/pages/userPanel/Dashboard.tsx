@@ -13,6 +13,7 @@ import Button from "../../components/Button";
 
 function Dashboard() {
   const thisUser: any = useContext(UserContext);
+  console.log(thisUser);
   return (
     <>
       <div className="panel-dashboard">

@@ -1,10 +1,11 @@
+import handleConvertToGoodDateFormat from "../../helper/handleConvertToGoodDateFormat";
 import "../../styles/components/lineItems/TripHistoryLineItem.scss";
 
 interface TripHistoryLineItemProps {
   tripDate: string;
   source: string;
   destination: string;
-  duration: number;
+  duration?: number;
 }
 
 function TripHistoryLineItem({
@@ -16,7 +17,7 @@ function TripHistoryLineItem({
   return (
     <div className="trip-history-line-item-main-container">
       <div>
-        تاریخ: <strong>{tripDate}</strong>
+        تاریخ: <strong>{handleConvertToGoodDateFormat(tripDate)}</strong>
       </div>
       <div>
         مبدا: <strong>{source}</strong>
@@ -24,9 +25,13 @@ function TripHistoryLineItem({
       <div>
         مقصد: <strong>{destination}</strong>
       </div>
-      <div>
-        مدت سفر: <strong>{duration} ساعت</strong>
-      </div>
+      {duration ? (
+        <div>
+          مدت سفر: <strong>{duration} ساعت</strong>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

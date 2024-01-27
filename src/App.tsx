@@ -10,21 +10,43 @@ import axios from "axios";
 function App() {
   const [thisUser, setThisUser] = useState(null);
 
-  const fetchUser = async () => {
-    try {
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: "Token " + window.localStorage.getItem("token"),
-      };
-
-      const response = await axios.get("/user/profile", {
-        headers: headers,
+  const fetchUser = () => {
+    axios
+      .get("/user/profile/", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `token ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        setThisUser(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-      setThisUser(response.data);
-    } catch (error) {
-      console.error("Error fetching user data: ", error);
-    }
   };
+
+  // const fetchUser = async () => {
+  //   try {
+  //     // const headers = {
+  //       //   "Content-Type": "application/json",
+  //       //   Authorization: "token " + localStorage.getItem("token"),
+  //       // };
+
+  //     const response = await axios.get("/user/profile/", {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `token ${localStorage.getItem("token")}`,
+  //       },
+  //     });
+  //     console.log(localStorage.getItem("token"));
+  //     setThisUser(response.data);
+  //     console.log(response.data);
+  //     console.log(thisUser);
+  //   } catch (error) {
+  //     console.error("Error fetching user data: ", error);
+  //   }
+  // };
 
   useEffect(() => {
     window.localStorage.getItem("token") !== null ? fetchUser() : {};

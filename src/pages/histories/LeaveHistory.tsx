@@ -9,7 +9,7 @@ function LeaveHistory() {
   const [leaves, setLeaves] = useState([] as any[]);
   const fetchAllLeaves = () => {
     axios
-      .get(`/.../${personnelNumber}/`)
+      .get(`/leave/see-all-for-employee/${personnelNumber}/`)
       .then((response) => {
         setLeaves(response.data);
       })
@@ -27,27 +27,15 @@ function LeaveHistory() {
       <div className="leave-history-title">تاریخچه مرخصی ها</div>
       <div className="leave-history-list">
         {leaves.map((leave) => {
-            return (
-                <LeaveHistoryLineItem
-                    leaveDate={leave.leaveDate}
-                    returnDate={leave.returnDate}
-                    leaveType={leave.leaveType}
-                    leaveReason={leave.leaveReason}
-                />
-            )
+          return (
+            <LeaveHistoryLineItem
+              leaveDate={leave.start_date}
+              returnDate={leave.end_date}
+              leaveType={leave.reason}
+              leaveReason={leave.description}
+            />
+          );
         })}
-        <LeaveHistoryLineItem
-          leaveDate="99/99/99"
-          leaveType="استعلاجی"
-          returnDate="99/99/99"
-          leaveReason="بیماری"
-        />
-        <LeaveHistoryLineItem
-          leaveDate="99/99/99"
-          leaveType="استعلاجی"
-          returnDate="99/99/99"
-          leaveReason="بیماری"
-        />
       </div>
     </div>
   );

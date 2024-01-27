@@ -7,7 +7,12 @@ function AllTripRequest() {
   const [tripReqs, setTripReqs] = useState([] as any[]);
   const fetchAllTripReq = () => {
     axios
-      .get("/.../")
+      .get("/trip/all/", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `token ${localStorage.getItem("token")}`,
+        },
+      })
       .then((response) => {
         setTripReqs(response.data);
       })
@@ -26,9 +31,13 @@ function AllTripRequest() {
         {tripReqs.map((trip) => {
           return (
             <TripReqLineItem
-              reqDate={trip.reqDate}
-              fullName={trip.fullName}
-              personnelNumber={trip.personnelNumber}
+              reqDate={trip.trip_created}
+              fullName={
+                trip.employee_detail.first_name +
+                " " +
+                trip.employee_detail.last_name
+              }
+              personnelNumber={trip.employee_detail.personnelNumber}
               onClick={() =>
                 (location.href = "/complete-trip-request/" + trip.id + "/")
               }
@@ -40,11 +49,6 @@ function AllTripRequest() {
           fullName="محمد محمدی"
           personnelNumber={123456}
           onClick={() => (location.href = "/complete-trip-request/123456/")}
-        />
-        <TripReqLineItem
-          reqDate="1400/01/01"
-          fullName="محمد محمدی"
-          personnelNumber={123456}
         />
       </div>
     </div>

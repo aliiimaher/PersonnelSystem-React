@@ -9,7 +9,12 @@ function PaymentHistory() {
   const [payments, setPayments] = useState([] as any[]);
   const fetchAllPayment = () => {
     axios
-      .get(`/.../${personnelNumber}/`)
+      .get(`/salary/paid-slip/${personnelNumber}/`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `token ${localStorage.getItem("token")}`,
+        },
+      })
       .then((response) => {
         setPayments(response.data);
       })
@@ -29,39 +34,11 @@ function PaymentHistory() {
         {payments.map((payment) => {
           return (
             <PaymentHistoryLineItem
-              paymentDate={payment.paymentDate}
-              paymentAmount={payment.paymentAmount}
+              paymentDate={payment.year + " " + payment.month}
+              paymentAmount={payment.salary_value}
             />
           );
         })}
-        <PaymentHistoryLineItem
-          paymentDate="1400/01/01"
-          paymentAmount={15000}
-        />
-        <PaymentHistoryLineItem
-          paymentDate="1400/01/01"
-          paymentAmount={15000}
-        />
-        <PaymentHistoryLineItem
-          paymentDate="1400/01/01"
-          paymentAmount={15000}
-        />
-        <PaymentHistoryLineItem
-          paymentDate="1400/01/01"
-          paymentAmount={15000}
-        />
-        <PaymentHistoryLineItem
-          paymentDate="1400/01/01"
-          paymentAmount={15000}
-        />
-        <PaymentHistoryLineItem
-          paymentDate="1400/01/01"
-          paymentAmount={15000}
-        />
-        <PaymentHistoryLineItem
-          paymentDate="1400/01/01"
-          paymentAmount={15000}
-        />
       </div>
     </div>
   );

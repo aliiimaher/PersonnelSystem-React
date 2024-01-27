@@ -1,3 +1,4 @@
+import handleConvertToGoodDateFormat from "../../helper/handleConvertToGoodDateFormat";
 import "../../styles/components/lineItems/LeaveHistoryLineItem.scss";
 
 interface LeaveHistoryLineItemProps {
@@ -16,10 +17,11 @@ function LeaveHistoryLineItem({
   return (
     <div className="leave-history-line-item-main-container">
       <div>
-        تاریخ آغاز: <strong>{leaveDate}</strong>
+        تاریخ آغاز: <strong>{handleConvertToGoodDateFormat(leaveDate)}</strong>
       </div>
       <div>
-        تاریخ بازگشت: <strong>{returnDate}</strong>
+        تاریخ بازگشت:{" "}
+        <strong>{handleConvertToGoodDateFormat(returnDate)}</strong>
       </div>
       <div>
         نوع مرخصی: <strong>{leaveType}</strong>
