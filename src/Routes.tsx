@@ -18,6 +18,9 @@ import AllLeaveRequest from "./pages/leave/AllLeaveRequest";
 import ResTrip from "./pages/trip/ResTrip";
 import AllTripRequest from "./pages/trip/AllTripRequest";
 import CompleteTripRequest from "./pages/trip/CompleteTripRequest";
+import SendMsg from "./pages/messaging/SendMsg";
+import SeeAllMsg from "./pages/messaging/SellAllMsg";
+import OneMsgPage from "./pages/messaging/OneMsgPage";
 
 function MyRoutes() {
   return (
@@ -59,6 +62,9 @@ function MyRoutes() {
           path="/complete-trip-request/:trip_id"
           element={<CompleteTripRequest />}
         />
+        <Route path="/send-msg" element={<SendMsg />} />
+        <Route path="/all-msg/:personnelNumber" element={<SeeAllMsg />} />
+        <Route path="/msg/:id" element={<OneMsgPage />} />
       </Routes>
     </Router>
   );

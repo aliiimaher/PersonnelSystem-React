@@ -109,7 +109,7 @@ function Dashboard() {
               <Button
                 onclick={() =>
                   (window.location.href =
-                    "/history-msg/" + thisUser.personnelNumber + "/")
+                    "/all-msg/" + thisUser.personnelNumber + "/")
                 }
                 text="تاریخچه‌های پیام"
               />
