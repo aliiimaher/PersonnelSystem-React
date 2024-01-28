@@ -55,11 +55,11 @@ function App() {
   return (
     <>
       <UserContext.Provider value={thisUser ? thisUser : {}}>
+        <Navbar />
         <div className="app-container" style={{ backgroundColor: "#E7E7E7" }}>
-          <Navbar />
           <MyRoutes />
-          <Footer />
         </div>
+        <Footer />
       </UserContext.Provider>
     </>
   );

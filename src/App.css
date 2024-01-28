@@ -16,12 +16,16 @@
 }
 
 #root {
-  max-width: 1400px;
+  max-width: 100%;
   margin: 0 auto;
   text-align: center;
   font-family: KalamehRegular;
+  background-color: #e7e7e7;
 }
 
 .app-container {
-  min-height: 64vh;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80%;
+  min-height: 120vh;
 }
