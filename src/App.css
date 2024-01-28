@@ -29,3 +29,14 @@
   max-width: 80%;
   min-height: 120vh;
 }
+
+@media screen and (max-width: 768px) {
+  #root {
+    max-width: 100%;
+  }
+  .app-container {
+    max-width: 100%;
+    min-height: 60vh;
+  }
+  
+}
