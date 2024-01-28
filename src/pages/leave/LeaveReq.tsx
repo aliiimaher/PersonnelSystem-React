@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../styles/pages/leave/LeaveReq.scss";
 import Button from "../../components/Button";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import handleCheckForLogin from "../../helper/handleCheckForLogin";
 
 function LeaveReq() {
   const { register, watch } = useForm();
@@ -42,6 +43,10 @@ function LeaveReq() {
     //   console.log(error);
     // })
   };
+
+  useEffect(() => {
+    handleCheckForLogin();
+  }, []);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../styles/pages/trip/ResTrip.scss";
 import InputBox from "../../components/InputBox";
 import DatePicker from "react-datepicker";
@@ -8,6 +8,7 @@ import AirTrip from "../../components/tripTypes/AirTrip";
 import VoyageTrip from "../../components/tripTypes/VoyageTrip";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import handleCheckForLogin from "../../helper/handleCheckForLogin";
 
 function ResTrip() {
   const { register, watch } = useForm();
@@ -50,6 +51,10 @@ function ResTrip() {
     window.localStorage.removeItem("selectedSeat");
     location.reload();
   };
+
+  useEffect(() => {
+    handleCheckForLogin();
+  }, []);
 
   return (
     <div className="res-trip-main-container">

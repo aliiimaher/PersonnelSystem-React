@@ -63,7 +63,7 @@ function MyRoutes() {
           element={<CompleteTripRequest />}
         />
         <Route path="/send-msg" element={<SendMsg />} />
-        <Route path="/all-msg/:personnelNumber" element={<SeeAllMsg />} />
+        <Route path="/all-msg" element={<SeeAllMsg />} />
         <Route path="/msg/:id" element={<OneMsgPage />} />
       </Routes>
     </Router>

@@ -107,10 +107,7 @@ function Dashboard() {
                 text="تاریخچه‌های حقوق"
               />
               <Button
-                onclick={() =>
-                  (window.location.href =
-                    "/all-msg/" + thisUser.personnelNumber + "/")
-                }
+                onclick={() => (window.location.href = "/all-msg/")}
                 text="تاریخچه‌های پیام"
               />
             </div>

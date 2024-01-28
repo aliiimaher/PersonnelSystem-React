@@ -3,8 +3,18 @@ import InputBox from "../../components/InputBox";
 import Button from "../../components/Button";
 import axios from "axios";
 import "../../styles/pages/messaging/SendMsg.scss";
+import handleCheckForLogin from "../../helper/handleCheckForLogin";
+import { useEffect } from "react";
 
 function SendMsg() {
+  useEffect(() => {
+    handleCheckForLogin();
+    // if (!handleCheckForLogin()) {
+    //   alert("ابتدا وارد شوید.");
+    //   window.location.href = "/login/";
+    // }
+  }, []);
+
   const { register, watch } = useForm();
 
   const handleSendMsg = () => {
