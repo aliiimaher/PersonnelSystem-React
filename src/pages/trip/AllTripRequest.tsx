@@ -44,12 +44,6 @@ function AllTripRequest() {
             />
           );
         })}
-        <TripReqLineItem
-          reqDate="1400/01/01"
-          fullName="محمد محمدی"
-          personnelNumber={123456}
-          onClick={() => (location.href = "/complete-trip-request/123456/")}
-        />
       </div>
     </div>
   );

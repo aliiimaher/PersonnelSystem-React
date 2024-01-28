@@ -9,21 +9,17 @@ import { useEffect } from "react";
 function SendMsg() {
   useEffect(() => {
     handleCheckForLogin();
-    // if (!handleCheckForLogin()) {
-    //   alert("ابتدا وارد شوید.");
-    //   window.location.href = "/login/";
-    // }
   }, []);
 
   const { register, watch } = useForm();
 
   const handleSendMsg = () => {
     const data: any = {};
-    data.receiver = watch("receiverPersonnelNumber");
-    data.title = watch("title");
-    data.body = watch("body");
+    data.personnel_number = watch("receiverPersonnelNumber");
+    // data.title = watch("title");
+    data.message_text = watch("body");
     axios
-      .post("/.../", data, {
+      .post("/messaging/", data, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `token ${localStorage.getItem("token")}`,

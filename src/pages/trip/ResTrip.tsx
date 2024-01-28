@@ -42,9 +42,12 @@ function ResTrip() {
         window.localStorage.removeItem("selectedSeat");
         location.href = "/profile/";
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      alert("سفر با موفقیت ثبت شد.");
+      localStorage.removeItem("selectedSeat");
+      location.href = "/profile/";
+      // .catch((error) => {
+      //   console.log(error);
+      // });
   };
 
   const handleCancelTrip = () => {

@@ -3,6 +3,7 @@ import Button from "../../components/Button";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "../../styles/pages/leave/CompleteLeaveRequest.scss";
+import handleConvertToGoodDateFormat from "../../helper/handleConvertToGoodDateFormat";
 
 function CompleteLeaveRequest() {
   const { leave_id } = useParams();
@@ -114,7 +115,9 @@ function CompleteLeaveRequest() {
               </th>
               <td>
                 <strong>
-                  {selectedLeaveReq ? selectedLeaveReq.start_date : ""}
+                  {selectedLeaveReq
+                    ? handleConvertToGoodDateFormat(selectedLeaveReq.start_date)
+                    : ""}
                 </strong>
               </td>
 
@@ -125,7 +128,9 @@ function CompleteLeaveRequest() {
               </th>
               <td>
                 <strong>
-                  {selectedLeaveReq ? selectedLeaveReq.end_date : ""}
+                  {selectedLeaveReq
+                    ? handleConvertToGoodDateFormat(selectedLeaveReq.end_date)
+                    : ""}
                 </strong>
               </td>
             </tr>

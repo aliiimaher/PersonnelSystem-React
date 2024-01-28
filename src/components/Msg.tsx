@@ -1,10 +1,10 @@
 import "../styles/components/Msg.scss";
 
 interface MsgProps {
-  msgTime: string;
-  senderName: string;
-  msgTitle: string;
-  msgBody: string;
+  msgTime?: string;
+  senderName?: string;
+  msgTitle?: string;
+  msgBody?: string;
 }
 
 function Msg({ msgTime, senderName, msgTitle, msgBody }: MsgProps) {

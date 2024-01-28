@@ -37,7 +37,7 @@ function CompleteTripRequest() {
       .then((response) => {
         console.log(response);
         alert("سفر با موفقیت تایید شد.");
-        location.href = "/complete-trip-request/";
+        location.href = "/accept-trip/";
       })
       .catch((error: any) => {
         console.log(error);

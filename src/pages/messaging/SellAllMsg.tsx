@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import "../../styles/pages/messaging/SeeAllMsg.scss";
 import axios from "axios";
 import MsgLineItem from "../../components/lineItems/MsgLineItem";
+import handleConvertToGoodDateFormat from "../../helper/handleConvertToGoodDateFormat";
 
 function SeeAllMsg() {
   const [msgs, setMsgs] = useState([] as any[]);
   const fetchAllMsg = () => {
     axios
-      .get("/.../", {
+      .get("/messaging/", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `token ${localStorage.getItem("token")}`,
@@ -15,6 +16,7 @@ function SeeAllMsg() {
       })
       .then((response) => {
         setMsgs(response.data);
+        console.log(msgs[0]);
       })
       .catch((error) => {
         console.log(error);
@@ -32,8 +34,8 @@ function SeeAllMsg() {
         {msgs.map((msg) => {
           return (
             <MsgLineItem
-              contactName={msg.receiver}
-              lastChatTime={msg.lastChatTime}
+              contactName={msg.user}
+              lastChatTime={handleConvertToGoodDateFormat(msg.updated_at)}
               onClick={() => (location.href = "/msg/" + msg.id + "/")}
             />
           );
