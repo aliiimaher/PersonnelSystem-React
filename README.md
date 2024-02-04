@@ -13,11 +13,9 @@ This is a front-end project for a personnel system built with **TypeScript, Boot
 ![Started Years](https://img.shields.io/badge/Since-2023-purple?style=flat)
 
 <hr />
-<img src="./readme/screenshots/desktop1.png" />
-<div align="center">
-  <img src="./readme/screenshots/desktop2.png" width="49%" />
-  <img src="./readme/screenshots/desktop3.png" width="49%" />
-</div>
+
+![png2](./docMe/resbus.png)
+![png1](./docMe/classD.png)
 
 
 ## Demonstration
