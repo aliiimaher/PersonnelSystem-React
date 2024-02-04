@@ -15,7 +15,6 @@ This is a front-end project for a personnel system built with **TypeScript, Boot
 <hr />
 
 ![png2](./docMe/resbus.png)
-![png1](./docMe/classD.png)
 
 
 ## Demonstration
@@ -51,3 +50,5 @@ npm run dev
 The Back-End is coded with Django by [@MsnzmT](https://github.com/MsnzmT)
 
 Repo: https://github.com/MsnzmT/PersonnelSystem_API 
+## Class Diagram
+![png1](./docMe/classDia.png)
