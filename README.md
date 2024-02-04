@@ -15,7 +15,7 @@ This is a front-end project for a personnel system built with **TypeScript, Boot
 <hr />
 
 ![png2](./docMe/resbus.png)
-![png1](./docMe/classD.png)
+![png1](./)
 
 
 ## Demonstration
