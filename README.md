@@ -1,30 +1,55 @@
-# React + TypeScript + Vite
+<p align="center">
+  <h1>
+   MZGRCO
+  </h1> 
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+# Personnel-System-Website-React
+This is a front-end project for a personnel system built with **TypeScript, Bootstrap CSS, Vite, React.js, Scss, and Axios**. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![GitHub Repo Stars](https://img.shields.io/github/stars/aliiimaher/PersonnelSystem-React?label=Stars)
+![GitHub forks](https://img.shields.io/github/forks/aliiimaher/PersonnelSystem-React?label=Forks)
+![Started Years](https://img.shields.io/badge/Since-2023-purple?style=flat)
 
-## Expanding the ESLint configuration
+<hr />
+<img src="./readme/screenshots/desktop1.png" />
+<div align="center">
+  <img src="./readme/screenshots/desktop2.png" width="49%" />
+  <img src="./readme/screenshots/desktop3.png" width="49%" />
+</div>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+## Demonstration
+You can visit here to see the website: https://mzgrco.ir/
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Installation
+Clone the source code into your computer.
+
+```
+git clone https://github.com/aliiimaher/PersonnelSystem-React.git
+```
+Install the project's dependencies.
+```
+npm install
+```
+Run the project easily with HMR (I've used Vite):
+```
+npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## ✨Features
+- Full error checking (password length checking, duplicated username, duplicated email, ...).
+- Full responsive (in three sizes: desktop, tablet, and phone)
+- User Authentication
+- Context API: I've implemented the Context API, likely for managing user authentication and sharing data across components.
+- Axios: Axios is used for making HTTP requests to your backend server. This is common for fetching data and interacting with APIs.
+- File Uploading
+- Loading Indicators: Loading indicators or spinners are displayed to inform users that content is being loaded.
+- Form Handling: The "react-hook-form" library is used for handling form submission.
+
+## Other
+### Back-End
+The Back-End is coded with Django by [@MsnzmT](https://github.com/MsnzmT)
+
+Repo: https://github.com/MsnzmT/PersonnelSystem_API 
